@@ -1,7 +1,6 @@
 /**
  * Homepage sections: biography, interests, education, experience, contact.
- * Markup mirrors the reference academic homepage: a profile column beside
- * the biography, then a vertical timeline of appointments.
+ * The masthead sits beside the portrait; appointments are a ruled list.
  */
 (function () {
   "use strict";
@@ -36,26 +35,29 @@
     }).join("");
 
     return (
-      '<div class="container about-grid">' +
-        '<div class="profile">' +
-          '<img class="avatar" src="' + ui.escapeHtml(ui.rootPath(profile.portrait)) + '" alt="' + ui.escapeHtml(profile.portraitAlt) + '" width="220" height="220">' +
-          "<h2 class=\"profile-name\">" + ui.escapeHtml(profile.name) + "</h2>" +
-          '<p class="profile-role">' + ui.escapeHtml(profile.role) + "</p>" +
-          '<p class="profile-org"><a href="' + ui.escapeHtml(profile.orgUrl) + '" target="_blank" rel="noopener noreferrer">' + ui.escapeHtml(profile.org) + "</a></p>" +
-          '<div class="social">' + ui.socialIcons(profile) + "</div>" +
-        "</div>" +
-        '<div class="about-main">' +
-          "<h1>Biography</h1>" +
+      '<div class="container">' +
+        '<header class="masthead">' +
+          '<img class="avatar" src="' + ui.escapeHtml(ui.rootPath(profile.portrait)) + '" alt="' + ui.escapeHtml(profile.portraitAlt) + '" width="168" height="168">' +
+          '<div class="masthead-copy">' +
+            "<p class=\"kicker\">" + ui.escapeHtml(profile.nameZh) + "</p>" +
+            "<h1 class=\"profile-name\">" + ui.escapeHtml(profile.name) + "</h1>" +
+            '<p class="profile-role">' + ui.escapeHtml(profile.role) + "</p>" +
+            '<p class="profile-org"><a href="' + ui.escapeHtml(profile.orgUrl) + '" target="_blank" rel="noopener noreferrer">' + ui.escapeHtml(profile.org) + "</a></p>" +
+            '<div class="social">' + ui.socialIcons(profile) + "</div>" +
+          "</div>" +
+        "</header>" +
+        '<div class="bio">' +
+          "<h2>Biography</h2>" +
           paragraphs +
-          '<div class="about-split">' +
-            "<div>" +
-              "<h2>Interests</h2>" +
-              "<ul>" + interestItems + "</ul>" +
-            "</div>" +
-            "<div>" +
-              "<h2>Education</h2>" +
-              '<ul class="edu-list">' + education + "</ul>" +
-            "</div>" +
+        "</div>" +
+        '<div class="about-split">' +
+          "<div>" +
+            "<h2>Interests</h2>" +
+            '<ul class="chips">' + interestItems + "</ul>" +
+          "</div>" +
+          "<div>" +
+            "<h2>Education</h2>" +
+            '<ul class="edu-list">' + education + "</ul>" +
           "</div>" +
         "</div>" +
       "</div>"
@@ -97,27 +99,26 @@
       }).join("");
       var groups = (job.groups || []).map(renderGroup).join("");
       return (
-        '<li class="timeline-item' + (job.current ? " is-current" : "") + '">' +
-          '<span class="timeline-marker" aria-hidden="true"></span>' +
-          '<article class="card">' +
-            '<div class="card-head">' +
-              ui.logoSvg(job.logo) +
+        '<li class="record' + (job.current ? " is-current" : "") + '">' +
+          ui.logoSvg(job.logo) +
+          "<div class=\"record-body\">" +
+            '<div class="record-head">' +
               "<div>" +
-                '<h2 class="card-role">' + ui.escapeHtml(job.role) + "</h2>" +
-                '<p class="card-org"><a href="' + ui.escapeHtml(job.orgUrl) + '" target="_blank" rel="noopener noreferrer">' + ui.escapeHtml(job.org) + "</a></p>" +
-                '<p class="card-meta"><span>' + ui.escapeHtml(job.dates) + "</span><span>" + ui.escapeHtml(job.location) + "</span></p>" +
+                '<h3 class="record-role">' + ui.escapeHtml(job.role) + "</h3>" +
+                '<p class="record-org"><a href="' + ui.escapeHtml(job.orgUrl) + '" target="_blank" rel="noopener noreferrer">' + ui.escapeHtml(job.org) + "</a></p>" +
               "</div>" +
+              '<p class="record-meta"><span>' + ui.escapeHtml(job.dates) + "</span><span>" + ui.escapeHtml(job.location) + "</span></p>" +
             "</div>" +
-            '<div class="card-body">' + paragraphs + groups + "</div>" +
-          "</article>" +
+            paragraphs + groups +
+          "</div>" +
         "</li>"
       );
     }).join("");
 
     return (
-      '<div class="container exp-layout">' +
-        '<h1 class="section-heading">Experience &amp; Awards</h1>' +
-        '<ol class="timeline">' + items + "</ol>" +
+      '<div class="container">' +
+        '<h2 class="section-heading">Experience</h2>' +
+        '<ol class="records">' + items + "</ol>" +
       "</div>"
     );
   }
@@ -138,8 +139,8 @@
     }).join("");
 
     return (
-      '<div class="container exp-layout">' +
-        '<h1 class="section-heading">Contact</h1>' +
+      '<div class="container contact-wrap">' +
+        "<h2 class=\"section-heading\">Contact</h2>" +
         '<ul class="contact-list">' + list + "</ul>" +
       "</div>"
     );
