@@ -1,0 +1,13 @@
+---
+description: Push requested code and file updates to GitHub
+alwaysApply: true
+---
+
+# Push requested updates
+
+When the user asks to change code or files in this repository, finish by committing those changes and pushing them to the existing GitHub remote.
+
+- Include only files that belong to the requested change. Leave out secrets, credentials, and editor metadata such as `.idea/`.
+- Commit on the current branch and push to its upstream. Use `git push` to `origin`. Do not force-push, skip hooks, or change git config.
+- A question, review, or explanation with no file change does not need a commit.
+- If the push needs approval or authentication, request it and complete the push. Tell the user the commit and the remote result.

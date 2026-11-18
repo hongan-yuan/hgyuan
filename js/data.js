@@ -113,17 +113,10 @@
       logo: "nokia",
       dates: "Jan 2024 – Apr 2025",
       location: "Shanghai",
-      paragraphs: [],
-      groups: [
-        {
-          title: "",
-          items: [
-            "Studied a task-orchestration paradigm for task-oriented physical-layer automation in 6G, based on domain-adapted large language model agents.",
-            "Designed a LoRA-based fine-tuning method so an LLM agent can interpret high-level user demands and arrange a suitable system workflow.",
-            "Built a 6G-oriented LLM agent architecture that joins high-level task descriptions with physical-layer configuration, and uses reasoning and planning to understand, orchestrate, and carry out information-transfer tasks."
-          ]
-        }
-      ]
+      paragraphs: [
+        "Designed domain-adapted large language model agents that turn high-level user demands into orchestrated 6G physical-layer workflows."
+      ],
+      groups: []
     },
     {
       current: false,
@@ -151,18 +144,10 @@
       logo: "nokia",
       dates: "Jun 2022 – Oct 2023",
       location: "Shanghai",
-      paragraphs: [],
-      groups: [
-        {
-          title: "",
-          items: [
-            "Contributed to the demonstration platform and key-technology validation of a 6G computing power network (CPN).",
-            "Implemented service addressing and routing over UDP, and integrated resource sensing with service scheduling.",
-            "Automated dynamic deployment of CPN services, balancing computation and communication cost across multiple edge nodes.",
-            "Scheduled computing and network tasks from real-time CPN state, raising network-wide resource utilization while protecting quality of service."
-          ]
-        }
-      ]
+      paragraphs: [
+        "Built and validated a 6G computing power network demonstration platform, covering UDP service routing, automated edge deployment, and real-time scheduling that balances resource use with quality of service."
+      ],
+      groups: []
     },
     {
       current: false,
