@@ -297,6 +297,13 @@ li {
   background: #fff;
 }
 
+.logo.logo-wordmark {
+  width: 96px;
+  height: 46px;
+  object-fit: contain;
+  object-position: left center;
+}
+
 .edu-item .logo {
   width: 38px;
   height: 38px;

@@ -36,28 +36,17 @@
   }
 
   /**
-   * East China Normal University and Henan University of Science and
-   * Technology use their official seals. Other institutions keep a monogram.
+   * Institution marks: university seals, and the Nokia Bell Labs wordmark.
+   * The wordmark is a vector file so it stays sharp at the card size.
    */
   function logoSvg(kind) {
-    var seals = {
-      ecnu: "assets/logo-ecnu.png",
-      haust: "assets/logo-haust.png"
+    var images = {
+      ecnu: { src: "assets/logo-ecnu.png", cls: "logo-seal", w: 46, h: 46 },
+      haust: { src: "assets/logo-haust.png", cls: "logo-seal", w: 46, h: 46 },
+      nokia: { src: "assets/logo-nokia.svg", cls: "logo-wordmark", w: 96, h: 46 }
     };
-    if (seals[kind]) {
-      return '<img class="logo logo-seal" src="' + escapeHtml(rootPath(seals[kind])) + '" alt="" width="46" height="46">';
-    }
-    var marks = {
-      nokia: { letters: "NOKIA", ring: "#124191", fill: "#e7eef8", text: "#124191" }
-    };
-    var mark = marks[kind] || marks.nokia;
-    var size = mark.letters.length > 4 ? 11 : 13;
-    return (
-      '<svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">' +
-        '<circle cx="32" cy="32" r="30" fill="' + mark.fill + '" stroke="' + mark.ring + '" stroke-width="2"/>' +
-        '<text x="32" y="36" text-anchor="middle" font-family="Montserrat, Roboto, sans-serif" font-size="' + size + '" font-weight="700" fill="' + mark.text + '">' + mark.letters + "</text>" +
-      "</svg>"
-    );
+    var image = images[kind] || images.ecnu;
+    return '<img class="logo ' + image.cls + '" src="' + escapeHtml(rootPath(image.src)) + '" alt="" width="' + image.w + '" height="' + image.h + '">';
   }
 
   function socialIcons(profile) {
