@@ -206,7 +206,8 @@ li {
   flex: 1 1 auto;
   flex-direction: column;
   min-width: 16rem;
-  padding-top: 0.45rem;
+  gap: 0.42rem;
+  padding-top: 0.95rem;
 }
 
 .masthead-nav {
@@ -237,30 +238,32 @@ li {
 }
 
 .profile-name-zh {
-  margin: 0.2rem 0 0;
+  margin: 0;
   color: var(--heading);
   font-family: var(--serif);
   font-size: 1.35rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .profile-role {
-  margin: 0.45rem 0 0;
+  margin: 0;
   color: var(--heading);
   font-size: 1.2rem;
+  line-height: 1.25;
 }
 
 .profile-org {
-  margin: 0.05rem 0 0;
+  margin: 0;
   font-size: 1.16rem;
+  line-height: 1.25;
 }
 
 .social {
   display: flex;
   gap: 0.9rem;
-  margin-top: auto;
+  margin: 0;
 }
 
 .social-link {
