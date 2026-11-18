@@ -129,7 +129,6 @@
     var rows = [
       { icon: "fa-solid fa-envelope", html: '<a href="mailto:' + ui.escapeHtml(profile.email) + '">' + ui.escapeHtml(profile.email) + "</a>" },
       {
-        tight: true,
         iconHtml: '<svg class="xhs-mark" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#FF2442"/><path fill="#fff" d="M6.2 7.3h11.6V9H6.2zm0 3.4h8.1v1.7H6.2zm0 3.4h11.6v1.7H6.2z"/></svg>',
         html: '<span class="visually-hidden">Xiaohongshu </span>' + ui.escapeHtml(profile.xiaohongshu)
       },
@@ -140,8 +139,7 @@
     ];
     var list = rows.map(function (row) {
       var iconHtml = row.iconHtml || '<i class="' + row.icon + '" aria-hidden="true"></i>';
-      var tight = row.tight ? ' class="is-tight"' : "";
-      return "<li" + tight + ">" + iconHtml + "<span>" + row.html + "</span></li>";
+      return "<li>" + iconHtml + "<span>" + row.html + "</span></li>";
     }).join("");
 
     return (

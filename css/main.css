@@ -485,16 +485,12 @@ li {
   text-align: center;
 }
 
-.contact-list li.is-tight {
-  gap: 0.28rem;
-  align-items: center;
-}
-
 .xhs-mark {
   width: 1.05rem;
   height: 1.05rem;
   flex: none;
   display: block;
+  margin: 0.22rem 0.1rem 0;
 }
 
 /* ----- Publications and patents ----- */
