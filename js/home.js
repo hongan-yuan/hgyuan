@@ -44,6 +44,7 @@
             '<p class="profile-org"><a href="' + ui.escapeHtml(profile.orgUrl) + '" target="_blank" rel="noopener noreferrer">' + ui.escapeHtml(profile.org) + "</a></p>" +
             '<div class="social">' + ui.socialIcons(profile) + "</div>" +
           "</div>" +
+          ui.renderMastheadNav("home") +
         "</header>" +
         '<div class="bio">' +
           "<h2>Biography</h2>" +

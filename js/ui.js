@@ -67,8 +67,7 @@
     }).join("");
   }
 
-  function renderHeader(activeKey) {
-    var profile = global.SiteData.profile;
+  function navItems(activeKey) {
     var home = rootPath("");
     var links = [
       { key: "home", label: "Home", href: home + "#about" },
@@ -76,12 +75,16 @@
       { key: "publications", label: "Publications", href: rootPath("publication/") },
       { key: "patents", label: "Patents", href: rootPath("patents/") }
     ];
-    var items = links.map(function (link) {
+    return links.map(function (link) {
       var current = link.key === activeKey ? ' aria-current="page"' : "";
       var active = link.key === activeKey ? " is-active" : "";
       return '<li><a class="nav-link' + active + '" data-nav="' + link.key + '" href="' + escapeHtml(link.href) + '"' + current + "><span>" + escapeHtml(link.label) + "</span></a></li>";
     }).join("");
+  }
 
+  function renderHeader(activeKey) {
+    var profile = global.SiteData.profile;
+    var home = rootPath("");
     return (
       '<nav class="navbar" id="navbar">' +
         '<div class="container navbar-inner">' +
@@ -89,10 +92,14 @@
           '<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">' +
             '<i class="fa-solid fa-bars"></i>' +
           "</button>" +
-          '<div class="nav-menu" id="nav-menu"><ul class="nav-list">' + items + "</ul></div>" +
+          '<div class="nav-menu" id="nav-menu"><ul class="nav-list">' + navItems(activeKey) + "</ul></div>" +
         "</div>" +
       "</nav>"
     );
+  }
+
+  function renderMastheadNav(activeKey) {
+    return '<nav class="masthead-nav" aria-label="Site"><ul class="nav-list">' + navItems(activeKey) + "</ul></nav>";
   }
 
   function renderFooter() {
@@ -109,7 +116,7 @@
     var header = document.getElementById("site-header");
     var footer = document.getElementById("site-footer");
     if (header) {
-      header.innerHTML = renderHeader(activeKey);
+      header.innerHTML = activeKey === "home" ? "" : renderHeader(activeKey);
     }
     if (footer) {
       footer.innerHTML = renderFooter();
@@ -259,6 +266,7 @@
     logoSvg: logoSvg,
     socialIcons: socialIcons,
     mountChrome: mountChrome,
+    renderMastheadNav: renderMastheadNav,
     initScrollSpy: initScrollSpy,
     openCite: openCite,
     formatAuthors: formatAuthors
