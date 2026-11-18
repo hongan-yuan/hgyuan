@@ -129,7 +129,7 @@
     var rows = [
       { icon: "fa-solid fa-envelope", html: '<a href="mailto:' + ui.escapeHtml(profile.email) + '">' + ui.escapeHtml(profile.email) + "</a>" },
       {
-        iconHtml: '<svg class="xhs-mark" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#FF2442"/><path fill="#fff" d="M6.2 7.3h11.6V9H6.2zm0 3.4h8.1v1.7H6.2zm0 3.4h11.6v1.7H6.2z"/></svg>',
+        iconHtml: '<img class="xhs-mark" src="' + ui.escapeHtml(ui.rootPath("assets/logo-xiaohongshu.png")) + '" alt="" width="200" height="200">',
         html: '<span class="visually-hidden">Xiaohongshu </span>' + ui.escapeHtml(profile.xiaohongshu)
       },
       { icon: "fa-solid fa-location-dot", html: ui.escapeHtml(profile.location) },
