@@ -484,6 +484,18 @@ li {
   text-align: center;
 }
 
+.contact-list li.is-tight {
+  gap: 0.28rem;
+  align-items: center;
+}
+
+.xhs-mark {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: none;
+  display: block;
+}
+
 /* ----- Publications and patents ----- */
 
 .page-narrow {

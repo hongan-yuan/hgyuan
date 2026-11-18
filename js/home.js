@@ -128,15 +128,20 @@
     var profile = data.profile;
     var rows = [
       { icon: "fa-solid fa-envelope", html: '<a href="mailto:' + ui.escapeHtml(profile.email) + '">' + ui.escapeHtml(profile.email) + "</a>" },
-      { icon: "fa-brands fa-xiaohongshu", html: "小红书: " + ui.escapeHtml(profile.xiaohongshu) },
+      {
+        tight: true,
+        iconHtml: '<svg class="xhs-mark" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#FF2442"/><path fill="#fff" d="M6.2 7.3h11.6V9H6.2zm0 3.4h8.1v1.7H6.2zm0 3.4h11.6v1.7H6.2z"/></svg>',
+        html: '<span class="visually-hidden">Xiaohongshu </span>' + ui.escapeHtml(profile.xiaohongshu)
+      },
       { icon: "fa-solid fa-location-dot", html: ui.escapeHtml(profile.location) },
       { icon: "fa-solid fa-building-columns", html: ui.escapeHtml(profile.department) },
       { icon: "ai ai-google-scholar", html: '<a href="' + ui.escapeHtml(profile.scholar) + '" target="_blank" rel="noopener noreferrer">Google Scholar</a>' },
       { icon: "fa-brands fa-github", html: '<a href="' + ui.escapeHtml(profile.github) + '" target="_blank" rel="noopener noreferrer">GitHub</a>' }
     ];
     var list = rows.map(function (row) {
-      var iconClass = row.icon.indexOf("ai ") === 0 ? row.icon : row.icon;
-      return "<li><i class=\"" + iconClass + "\" aria-hidden=\"true\"></i><span>" + row.html + "</span></li>";
+      var iconHtml = row.iconHtml || '<i class="' + row.icon + '" aria-hidden="true"></i>';
+      var tight = row.tight ? ' class="is-tight"' : "";
+      return "<li" + tight + ">" + iconHtml + "<span>" + row.html + "</span></li>";
     }).join("");
 
     return (
