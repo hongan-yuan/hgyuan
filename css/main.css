@@ -195,18 +195,22 @@ li {
 
 .masthead {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 1.6rem 2rem;
   padding-bottom: 1.8rem;
   border-bottom: 1px solid var(--line);
 }
 
 .masthead-copy {
+  display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
   min-width: 16rem;
+  padding-top: 0.45rem;
 }
 
 .masthead-nav {
+  align-self: center;
   margin-left: auto;
 }
 
@@ -256,7 +260,7 @@ li {
 .social {
   display: flex;
   gap: 0.9rem;
-  margin-top: 0.7rem;
+  margin-top: auto;
 }
 
 .social-link {
