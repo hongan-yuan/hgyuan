@@ -39,7 +39,8 @@
         '<header class="masthead">' +
           '<img class="avatar" src="' + ui.escapeHtml(ui.rootPath(profile.portrait)) + '" alt="' + ui.escapeHtml(profile.portraitAlt) + '" width="731" height="1024">' +
           '<div class="masthead-copy">' +
-            "<h1 class=\"profile-name\">" + ui.escapeHtml(profile.name) + "<span class=\"profile-name-zh\">（" + ui.escapeHtml(profile.nameZh) + "）</span></h1>" +
+            "<h1 class=\"profile-name\">" + ui.escapeHtml(profile.name) + "</h1>" +
+            "<p class=\"profile-name-zh\">（" + ui.escapeHtml(profile.nameZh) + "）</p>" +
             '<p class="profile-role">' + ui.escapeHtml(profile.role) + "</p>" +
             '<p class="profile-org"><a href="' + ui.escapeHtml(profile.orgUrl) + '" target="_blank" rel="noopener noreferrer">' + ui.escapeHtml(profile.org) + "</a></p>" +
             '<div class="social">' + ui.socialIcons(profile) + "</div>" +
