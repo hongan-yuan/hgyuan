@@ -4,7 +4,7 @@ Personal academic homepage of Honggang Yuan (袁红刚), Ph.D. student in Softwa
 
 The public site is published from this repository with GitHub Pages:
 
-https://hongan-yuan.github.io/HonggangYuan/
+https://hongan-yuan.github.io/hgyuan/
 
 ## Layout
 
