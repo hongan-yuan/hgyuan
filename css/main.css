@@ -12,7 +12,7 @@
   --nav-active: #7a2f2a;
   --muted: #7a736c;
   --line: #e4ddd4;
-  --paper: #f6f3ee;
+  --paper: #fff;
   --bg-alt: #f3efe8;
   --max: 1040px;
   --nav-h: 64px;
@@ -119,7 +119,7 @@ li {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(246, 243, 238, 0.92);
+  background: #fff;
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(10px);
 }
@@ -203,18 +203,8 @@ li {
 
 .avatar {
   width: 148px;
-  height: 148px;
+  height: auto;
   flex: none;
-  border-radius: 8px;
-  object-fit: cover;
-  object-position: center 18%;
-}
-
-.kicker {
-  margin: 0 0 0.15rem;
-  color: var(--muted);
-  font-size: 0.82rem;
-  letter-spacing: 0.14em;
 }
 
 .profile-name {
@@ -751,7 +741,7 @@ li {
 
   .avatar {
     width: 112px;
-    height: 112px;
+    height: auto;
   }
 
   .profile-name {

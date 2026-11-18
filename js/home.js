@@ -37,9 +37,8 @@
     return (
       '<div class="container">' +
         '<header class="masthead">' +
-          '<img class="avatar" src="' + ui.escapeHtml(ui.rootPath(profile.portrait)) + '" alt="' + ui.escapeHtml(profile.portraitAlt) + '" width="168" height="168">' +
+          '<img class="avatar" src="' + ui.escapeHtml(ui.rootPath(profile.portrait)) + '" alt="' + ui.escapeHtml(profile.portraitAlt) + '" width="731" height="1024">' +
           '<div class="masthead-copy">' +
-            "<p class=\"kicker\">" + ui.escapeHtml(profile.nameZh) + "</p>" +
             "<h1 class=\"profile-name\">" + ui.escapeHtml(profile.name) + "</h1>" +
             '<p class="profile-role">' + ui.escapeHtml(profile.role) + "</p>" +
             '<p class="profile-org"><a href="' + ui.escapeHtml(profile.orgUrl) + '" target="_blank" rel="noopener noreferrer">' + ui.escapeHtml(profile.org) + "</a></p>" +
