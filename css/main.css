@@ -220,6 +220,7 @@ li {
   width: 148px;
   height: auto;
   flex: none;
+  border-radius: 12px;
 }
 
 .profile-name {
