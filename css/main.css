@@ -210,7 +210,7 @@ li {
 .profile-name {
   margin: 0;
   font-family: var(--serif);
-  font-size: 2.7rem;
+  font-size: 3.05rem;
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -219,12 +219,12 @@ li {
 .profile-role {
   margin: 0.45rem 0 0;
   color: var(--heading);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
 }
 
 .profile-org {
   margin: 0.05rem 0 0;
-  font-size: 1.02rem;
+  font-size: 1.16rem;
 }
 
 .social {
@@ -235,7 +235,7 @@ li {
 
 .social-link {
   color: var(--heading);
-  font-size: 1.15rem;
+  font-size: 1.45rem;
   line-height: 1;
 }
 
@@ -746,7 +746,7 @@ li {
   }
 
   .profile-name {
-    font-size: 2.15rem;
+    font-size: 2.4rem;
   }
 
   .record-head {
