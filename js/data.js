@@ -23,6 +23,7 @@
     orgUrl: ecnuUrl,
     email: "yuanhg1024@gmail.com",
     phone: "155-3974-9702",
+    xiaohongshu: "2624853693",
     location: "Putuo District, Shanghai, China",
     department: "Software Engineering Institute, East China Normal University",
     github: "https://github.com/hongan-yuan",

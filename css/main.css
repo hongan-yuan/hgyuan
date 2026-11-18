@@ -231,6 +231,14 @@ li {
   line-height: 1.05;
 }
 
+.profile-name-zh {
+  margin-left: 0.28em;
+  font-size: 0.48em;
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .profile-role {
   margin: 0.45rem 0 0;
   color: var(--heading);

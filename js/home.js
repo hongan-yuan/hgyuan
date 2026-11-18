@@ -39,7 +39,7 @@
         '<header class="masthead">' +
           '<img class="avatar" src="' + ui.escapeHtml(ui.rootPath(profile.portrait)) + '" alt="' + ui.escapeHtml(profile.portraitAlt) + '" width="731" height="1024">' +
           '<div class="masthead-copy">' +
-            "<h1 class=\"profile-name\">" + ui.escapeHtml(profile.name) + "</h1>" +
+            "<h1 class=\"profile-name\">" + ui.escapeHtml(profile.name) + "<span class=\"profile-name-zh\">（" + ui.escapeHtml(profile.nameZh) + "）</span></h1>" +
             '<p class="profile-role">' + ui.escapeHtml(profile.role) + "</p>" +
             '<p class="profile-org"><a href="' + ui.escapeHtml(profile.orgUrl) + '" target="_blank" rel="noopener noreferrer">' + ui.escapeHtml(profile.org) + "</a></p>" +
             '<div class="social">' + ui.socialIcons(profile) + "</div>" +
@@ -127,7 +127,7 @@
     var profile = data.profile;
     var rows = [
       { icon: "fa-solid fa-envelope", html: '<a href="mailto:' + ui.escapeHtml(profile.email) + '">' + ui.escapeHtml(profile.email) + "</a>" },
-      { icon: "fa-solid fa-phone", html: '<a href="tel:+86' + profile.phone.replace(/-/g, "") + '">' + ui.escapeHtml(profile.phone) + "</a>" },
+      { icon: "fa-brands fa-xiaohongshu", html: "小红书: " + ui.escapeHtml(profile.xiaohongshu) },
       { icon: "fa-solid fa-location-dot", html: ui.escapeHtml(profile.location) },
       { icon: "fa-solid fa-building-columns", html: ui.escapeHtml(profile.department) },
       { icon: "ai ai-google-scholar", html: '<a href="' + ui.escapeHtml(profile.scholar) + '" target="_blank" rel="noopener noreferrer">Google Scholar</a>' },
