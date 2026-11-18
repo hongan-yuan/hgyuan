@@ -1,0 +1,737 @@
+/*
+ * Academic homepage styles.
+ * The layout follows the reference site: a sticky name bar, a two-column
+ * biography, a gray experience band with a vertical timeline, and a
+ * filterable publication list. Tokens below are measured from that page.
+ */
+
+:root {
+  --text: rgba(0, 0, 0, 0.8);
+  --heading: #313131;
+  --brand: #2b2b2b;
+  --link: #1565c0;
+  --nav-active: #2962ff;
+  --muted: #757575;
+  --line: #e6e6e6;
+  --bg-alt: #f6f6f6;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --timeline: #90caf9;
+  --dot: #1e88e5;
+  --max: 1140px;
+  --nav-h: 70px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: #fff;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+.section-heading {
+  margin: 0 0 0.85rem;
+  color: var(--heading);
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 2.53rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+h2 {
+  margin: 1.4rem 0 0.55rem;
+  color: var(--heading);
+  font-family: Montserrat, Roboto, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+p {
+  margin: 0 0 0.9rem;
+}
+
+ul {
+  margin: 0.2rem 0 0.8rem;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin: 0.18rem 0;
+}
+
+.container {
+  width: min(var(--max), calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Author display values (grid, flex) would otherwise override the hidden attribute. */
+[hidden] {
+  display: none !important;
+}
+
+/* ----- Navigation ----- */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.04);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  min-height: var(--nav-h);
+  gap: 0.5rem 1.25rem;
+}
+
+.navbar-brand {
+  color: var(--brand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem 1.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link {
+  color: #444;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--nav-active);
+  text-decoration: none;
+}
+
+.nav-link.is-active {
+  color: var(--nav-active);
+  font-weight: 700;
+}
+
+/* ----- Home: biography ----- */
+
+.section-about,
+.section-contact {
+  padding: 2.75rem 0 2.2rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1.5rem 2.25rem;
+  align-items: start;
+}
+
+.profile {
+  text-align: center;
+  padding-top: 0.4rem;
+}
+
+.avatar {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.profile-name {
+  margin: 0.85rem 0 0.15rem;
+  font-size: 1.7rem;
+}
+
+.profile-role {
+  margin: 0;
+  color: #9e9e9e;
+  font-size: 1.02rem;
+}
+
+.profile-org {
+  margin: 0.1rem 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.social-link {
+  color: var(--link);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.social-link:hover {
+  text-decoration: none;
+  color: var(--nav-active);
+}
+
+.about-main h1 {
+  margin-bottom: 0.7rem;
+}
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 2rem;
+  margin-top: 1.4rem;
+}
+
+.about-split h2:first-child {
+  margin-top: 0;
+}
+
+.edu-list,
+.skill-list {
+  list-style: none;
+  padding: 0;
+}
+
+.edu-item {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin: 0 0 0.95rem;
+}
+
+.edu-degree {
+  margin: 0;
+  color: var(--heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.edu-meta {
+  margin: 0.12rem 0 0;
+  color: #555;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.edu-bar {
+  color: #888;
+}
+
+.logo {
+  width: 46px;
+  height: 46px;
+  flex: none;
+}
+
+.edu-item .logo {
+  width: 38px;
+  height: 38px;
+}
+
+/* ----- Experience timeline ----- */
+
+.section-experience {
+  background: var(--bg-alt);
+  padding: 3.2rem 0 2.6rem;
+}
+
+.exp-layout {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.78fr) minmax(0, 1.22fr);
+  gap: 0.5rem 1.5rem;
+  align-items: start;
+}
+
+.section-heading {
+  margin: 0.35rem 0 0;
+  padding-right: 0.5rem;
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 1rem 1.7rem;
+}
+
+/* Each item draws its own segment so the line starts and ends on a dot. */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--timeline);
+}
+
+.timeline-item:first-child::before {
+  top: 22px;
+}
+
+.timeline-item:last-child::before {
+  bottom: auto;
+  height: 22px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--dot);
+  border-radius: 50%;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.timeline-item.is-current .timeline-marker {
+  background: var(--dot);
+}
+
+.card {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  padding: 1rem 1.15rem 0.85rem;
+}
+
+.card-head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.card-role {
+  margin: 0;
+  color: #212121;
+  font-family: Roboto, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.card-org {
+  margin: 0.05rem 0 0;
+  color: #212121;
+  font-size: 1.02rem;
+}
+
+.card-org a {
+  color: inherit;
+}
+
+.card-org a:hover {
+  color: var(--link);
+}
+
+.card-meta {
+  margin: 0.12rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.card-meta span + span {
+  margin-left: 1.1rem;
+}
+
+.card-body {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+}
+
+.card-body h3 {
+  margin: 0.75rem 0 0.2rem;
+  font-family: Roboto, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.card-body p:last-child,
+.card-body ul:last-child {
+  margin-bottom: 0.2rem;
+}
+
+/* ----- Contact ----- */
+
+.contact-list {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+}
+
+.contact-list li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin: 0.45rem 0;
+}
+
+.contact-list i {
+  width: 1.25rem;
+  margin-top: 0.25rem;
+  color: var(--link);
+  text-align: center;
+}
+
+/* ----- Publications and patents ----- */
+
+.page-narrow {
+  padding: 2.4rem 0 3.5rem;
+}
+
+.page-narrow h1 {
+  margin-bottom: 1.1rem;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.7rem;
+}
+
+.filter-field input,
+.filter-field select {
+  height: 34px;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-size: 0.92rem;
+}
+
+.filter-field input {
+  width: 210px;
+}
+
+.pub-note {
+  margin: 0 0 1.1rem;
+  font-size: 0.95rem;
+}
+
+.pub {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  gap: 0.35rem 0.55rem;
+  margin: 0 0 1.35rem;
+}
+
+.pub-icon {
+  padding-top: 0.15rem;
+  color: #888;
+  font-size: 1rem;
+}
+
+.pub-title {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.pub-tag {
+  color: #222;
+  font-weight: 700;
+}
+
+.pub-title a,
+.pub-title-text {
+  color: var(--link);
+}
+
+.pub-authors,
+.pub-venue {
+  margin: 0.12rem 0 0;
+  font-size: 0.95rem;
+}
+
+.pub-venue {
+  color: #333;
+}
+
+.pub-actions {
+  margin-top: 0.4rem;
+}
+
+.pub-note-line {
+  margin: 0.28rem 0 0;
+  color: #ef6c00;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.pub-empty,
+.lead {
+  color: #444;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0 0.35rem 0.3rem 0;
+  padding: 0.15rem 0.65rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #f5f5f5;
+  text-decoration: none;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 0.25rem;
+  padding: 0.02rem 0.38rem;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  vertical-align: 1px;
+}
+
+.badge-ccf-a {
+  background: #c62828;
+}
+
+.badge-ccf-c {
+  background: #ef6c00;
+}
+
+.badge-sci {
+  background: #1565c0;
+}
+
+.patent-list {
+  padding-left: 1.2rem;
+}
+
+/* ----- Cite dialog ----- */
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-dialog {
+  position: relative;
+  width: min(640px, 100%);
+  max-height: min(80vh, 720px);
+  overflow: auto;
+  padding: 1.1rem 1.2rem 1rem;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.modal-head h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.modal-close {
+  border: 0;
+  background: transparent;
+  color: #444;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.bibtex {
+  margin: 0.8rem 0;
+  padding: 0.8rem 0.9rem;
+  overflow: auto;
+  border-radius: 4px;
+  background: #f6f8fa;
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.cite-summary {
+  margin: 0 0 0.8rem;
+  font-size: 0.92rem;
+}
+
+/* ----- Footer ----- */
+
+.site-footer {
+  padding: 1.6rem 1rem 2rem;
+  border-top: 1px solid var(--line);
+  color: #777;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ----- Narrow screens ----- */
+
+@media (max-width: 991px) {
+  .navbar-inner {
+    flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* Keep the open menu in document flow so it does not cover the portrait. */
+  .nav-menu {
+    display: none;
+    position: static;
+    flex: 1 0 100%;
+    padding: 0.15rem 0 0.55rem;
+    background: #fff;
+    box-shadow: none;
+  }
+
+  .nav-menu.is-open {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .nav-link {
+    display: inline-block;
+    padding: 0.35rem 0;
+    font-size: 1rem;
+  }
+
+  .about-grid,
+  .about-split,
+  .exp-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    text-align: left;
+    margin-bottom: 0.8rem;
+  }
+
+  .profile {
+    padding-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
