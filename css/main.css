@@ -245,7 +245,7 @@ li {
 }
 
 .bio {
-  max-width: 46rem;
+  width: 100%;
   padding-top: 1.7rem;
 }
 
@@ -253,6 +253,7 @@ li {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 1.5rem 3rem;
+  width: 100%;
   margin-top: 1.6rem;
   padding-top: 1.4rem;
   border-top: 1px solid var(--line);
