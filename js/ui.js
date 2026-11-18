@@ -36,16 +36,21 @@
   }
 
   /**
-   * Monogram marks stand in for institution logos. They keep the card
-   * layout of the reference site without hotlinking trademark files.
+   * East China Normal University and Henan University of Science and
+   * Technology use their official seals. Other institutions keep a monogram.
    */
   function logoSvg(kind) {
+    var seals = {
+      ecnu: "assets/logo-ecnu.png",
+      haust: "assets/logo-haust.png"
+    };
+    if (seals[kind]) {
+      return '<img class="logo logo-seal" src="' + escapeHtml(rootPath(seals[kind])) + '" alt="" width="46" height="46">';
+    }
     var marks = {
-      ecnu: { letters: "ECNU", ring: "#8c1d18", fill: "#f8eceb", text: "#8c1d18" },
-      haust: { letters: "HAUST", ring: "#0d47a1", fill: "#e8f0fb", text: "#0d47a1" },
       nokia: { letters: "NOKIA", ring: "#124191", fill: "#e7eef8", text: "#124191" }
     };
-    var mark = marks[kind] || marks.ecnu;
+    var mark = marks[kind] || marks.nokia;
     var size = mark.letters.length > 4 ? 11 : 13;
     return (
       '<svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">' +

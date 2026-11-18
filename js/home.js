@@ -19,10 +19,6 @@
       return "<li>" + ui.escapeHtml(item) + "</li>";
     }).join("");
 
-    var skillItems = data.skills.map(function (skill) {
-      return "<li><strong>" + ui.escapeHtml(skill.label) + ":</strong> " + ui.escapeHtml(skill.value) + "</li>";
-    }).join("");
-
     var education = data.education.map(function (item) {
       var advisor = "";
       if (item.advisor) {
@@ -55,8 +51,6 @@
             "<div>" +
               "<h2>Interests</h2>" +
               "<ul>" + interestItems + "</ul>" +
-              "<h2>Skills</h2>" +
-              "<ul class=\"skill-list\">" + skillItems + "</ul>" +
             "</div>" +
             "<div>" +
               "<h2>Education</h2>" +
@@ -136,8 +130,7 @@
       { icon: "fa-solid fa-location-dot", html: ui.escapeHtml(profile.location) },
       { icon: "fa-solid fa-building-columns", html: ui.escapeHtml(profile.department) },
       { icon: "ai ai-google-scholar", html: '<a href="' + ui.escapeHtml(profile.scholar) + '" target="_blank" rel="noopener noreferrer">Google Scholar</a>' },
-      { icon: "fa-brands fa-github", html: '<a href="' + ui.escapeHtml(profile.github) + '" target="_blank" rel="noopener noreferrer">GitHub</a>' },
-      { icon: "fa-solid fa-file-lines", html: '<a href="' + ui.escapeHtml(ui.rootPath(profile.cv)) + '">Curriculum Vitae (PDF, Chinese)</a>' }
+      { icon: "fa-brands fa-github", html: '<a href="' + ui.escapeHtml(profile.github) + '" target="_blank" rel="noopener noreferrer">GitHub</a>' }
     ];
     var list = rows.map(function (row) {
       var iconClass = row.icon.indexOf("ai ") === 0 ? row.icon : row.icon;

@@ -48,13 +48,6 @@
     "Large Language Model Agents for 6G"
   ];
 
-  var skills = [
-    { label: "English", value: "CET-6, with strong reading and writing" },
-    { label: "Programming", value: "Python, Java, JavaScript, SQL, C, C++" },
-    { label: "Software", value: "Linux, Docker, Nginx, Kubernetes, Git, Apache Server, Spring Framework" },
-    { label: "Coursework", value: "Computer networks, operating systems, computer organization, data structures and algorithms, databases, discrete mathematics, convex optimization" }
-  ];
-
   var education = [
     {
       degree: "Ph.D. in Software Engineering",
@@ -213,6 +206,7 @@
         { label: "SCI Q1", kind: "sci" }
       ],
       links: [],
+      published: false,
       note: "Major revision",
       summary: "Studies personalized LLM inference when uploading a LoRA adapter to the cloud is a data risk and edge compute is limited. E-LoRA keeps the LoRA adapter at the edge and runs it together with the cloud base model, and uses reinforcement learning to trade off latency against throughput. The reported result is up to a 65% reduction in token-generation latency and throughput up to 6.1 times that of prior methods.",
       bibtex: [
@@ -317,6 +311,7 @@
         { label: "CCF-A", kind: "ccf-a" }
       ],
       links: [],
+      published: false,
       note: "Under revision",
       summary: "Studies microservice orchestration for low-Earth-orbit networks whose topology and demand both change. The manuscript is under revision at IEEE INFOCOM.",
       bibtex: [
@@ -436,7 +431,6 @@
     profile: profile,
     biography: biography,
     interests: interests,
-    skills: skills,
     education: education,
     experience: experience,
     publications: publications,

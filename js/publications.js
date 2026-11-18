@@ -6,7 +6,9 @@
   "use strict";
 
   var ui = window.SiteUI;
-  var publications = window.SiteData.publications.slice();
+  var publications = window.SiteData.publications.filter(function (paper) {
+    return paper.published !== false;
+  });
 
   function years() {
     var seen = {};
