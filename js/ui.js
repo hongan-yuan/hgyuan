@@ -102,14 +102,123 @@
     return '<nav class="masthead-nav" aria-label="Site"><ul class="nav-list">' + navItems(activeKey) + "</ul></nav>";
   }
 
+  function ordinalSuffix(count) {
+    var mod100 = count % 100;
+    if (mod100 >= 11 && mod100 <= 13) {
+      return "th";
+    }
+    switch (count % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  }
+
+  function renderDigitPlaceholders() {
+    var marks = "";
+    var i;
+    for (i = 0; i < 5; i += 1) {
+      marks += '<span class="digit is-pending" aria-hidden="true"></span>';
+    }
+    return marks;
+  }
+
   function renderFooter() {
     var year = new Date().getFullYear();
-    var name = escapeHtml(global.SiteData.profile.name);
+    var profile = global.SiteData.profile;
+    var name = escapeHtml(profile.name);
+    var home = rootPath("");
     return (
       '<footer class="site-footer">' +
-        '<p>' + name + " &copy; " + year + "</p>" +
+        '<p class="visitor-line">' +
+          "Welcome, you're the " +
+          '<span class="visitor-count" aria-busy="true">' +
+            '<span class="visitor-digits" id="visitor-digits" aria-hidden="true">' + renderDigitPlaceholders() + "</span>" +
+            '<span class="visitor-ordinal" id="visitor-ordinal" aria-hidden="true"></span>' +
+            '<span class="visually-hidden" id="visitor-spoken"></span>' +
+          "</span>" +
+          " visitor since " + escapeHtml(profile.since) + ", Back to " +
+          '<a href="' + escapeHtml(home || "./") + '">' + name + "'s Homepage</a>." +
+        "</p>" +
+        '<p class="footer-copy">' + name + " &copy; " + year + "</p>" +
       "</footer>"
     );
+  }
+
+  function paintVisitorCount(count) {
+    var digits = document.getElementById("visitor-digits");
+    var ordinal = document.getElementById("visitor-ordinal");
+    var spoken = document.getElementById("visitor-spoken");
+    if (!digits || !ordinal || !spoken || !isFinite(count) || count < 0) {
+      return;
+    }
+    var value = Math.floor(count);
+    var text = String(value);
+    while (text.length < 5) {
+      text = "0" + text;
+    }
+    digits.innerHTML = text.split("").map(function (digit) {
+      return '<span class="digit">' + digit + "</span>";
+    }).join("");
+    var suffix = ordinalSuffix(value);
+    ordinal.textContent = suffix;
+    spoken.textContent = value + suffix;
+    var countWrap = digits.parentNode;
+    if (countWrap) {
+      countWrap.setAttribute("aria-busy", "false");
+    }
+  }
+
+  /**
+   * The page is static, so the running total comes from Vercount.
+   * A browser is counted once; later visits on this device only add page views.
+   */
+  function initVisitorCounter() {
+    var digits = document.getElementById("visitor-digits");
+    if (!digits || digits.getAttribute("data-bound") === "true") {
+      return;
+    }
+    digits.setAttribute("data-bound", "true");
+    if (!global.fetch || String(global.location.href).indexOf("http") !== 0) {
+      return;
+    }
+    var storageKey = "hgyuan-visitor";
+    var fresh = true;
+    try {
+      fresh = global.localStorage.getItem(storageKey) !== "1";
+    } catch (error) {
+      fresh = true;
+    }
+    global.fetch("https://events.vercount.one/api/v2/log", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: global.location.href, isNewUv: fresh })
+    }).then(function (response) {
+      if (!response.ok) {
+        throw new Error("counter");
+      }
+      return response.json();
+    }).then(function (payload) {
+      var data = payload && payload.data ? payload.data : null;
+      if (!data || data.site_uv == null) {
+        return;
+      }
+      if (fresh) {
+        try {
+          global.localStorage.setItem(storageKey, "1");
+        } catch (error) {
+          /* The count still shows; the next visit may be counted again. */
+        }
+      }
+      paintVisitorCount(Number(data.site_uv));
+    }).catch(function () {
+      /* Keep the quiet placeholder tiles when the counter is unreachable. */
+    });
   }
 
   function mountChrome(activeKey) {
@@ -120,6 +229,7 @@
     }
     if (footer) {
       footer.innerHTML = renderFooter();
+      initVisitorCounter();
     }
     bindNavToggle();
   }

@@ -31,7 +31,9 @@
     // Path is resolved against the page root by the UI module.
     cv: "assets/Honggang_Yuan_CV.pdf",
     portrait: "assets/portrait.jpg",
-    portraitAlt: "Portrait of Honggang Yuan"
+    portraitAlt: "Portrait of Honggang Yuan",
+    // Public homepage first published; shown beside the visitor count.
+    since: "11/18/2026"
   };
 
   var biography = [
